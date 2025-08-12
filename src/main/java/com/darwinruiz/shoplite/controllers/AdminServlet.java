@@ -21,7 +21,7 @@ public class AdminServlet extends HttpServlet {
             throw new IOException(e);
         }
     }
-
+ //no se que pasa no me deja subir
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String name = req.getParameter("name");
