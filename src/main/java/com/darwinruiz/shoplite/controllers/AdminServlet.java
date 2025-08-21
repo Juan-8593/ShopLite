@@ -21,15 +21,22 @@ public class AdminServlet extends HttpServlet {
             throw new IOException(e);
         }
     }
- //no se que pasa no me deja subir
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String name = req.getParameter("name");
         String priceStr = req.getParameter("price");
+        String stockStr = req.getParameter("stock");
 
         double price = 0;
+        int stock = 0;
+
         try {
             price = Double.parseDouble(priceStr);
+        } catch (NumberFormatException ignored) {}
+
+        try {
+            stock = Integer.parseInt(stockStr);
         } catch (NumberFormatException ignored) {}
 
         if (name == null || name.trim().isEmpty() || price <= 0) {
@@ -37,8 +44,9 @@ public class AdminServlet extends HttpServlet {
             return;
         }
 
-        long id = repo.nextId();
-        Product p = new Product(id, name.trim(), price);
+
+        Product p = new Product(0L, name.trim(), price, stock);
+
         repo.add(p);
 
         resp.sendRedirect(req.getContextPath() + "/home");
