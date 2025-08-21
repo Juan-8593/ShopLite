@@ -12,19 +12,22 @@ import java.util.List;
 
 @WebServlet("/home")
 public class HomeServlet extends HttpServlet {
-    private final ProductRepository repo = new ProductRepository();
+    private ProductRepository repo;
+
+    @Override
+    public void init() {
+        repo = new ProductRepository();
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         int page = 1;
         int size = 5;
 
-
         try {
             page = Integer.parseInt(req.getParameter("page"));
             if (page < 1) page = 1;
         } catch (NumberFormatException ignored) {}
-
 
         try {
             size = Integer.parseInt(req.getParameter("size"));

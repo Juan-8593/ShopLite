@@ -1,34 +1,32 @@
 package com.darwinruiz.shoplite.models;
 
+import java.time.LocalDateTime;
+
 public class Product {
-    private Long id;
+    private int id;
     private String name;
-    private Double price;
-    private Integer stock;
+    private double price;
+    private int stock;
+    private LocalDateTime createdAt;
 
+    public Product() {}
 
-    public Product(Long id, String name, Double price, Integer stock) {
+    public Product(int id, String name, double price, int stock, LocalDateTime createdAt) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.stock = stock;
+        this.createdAt = createdAt;
     }
 
-
-    public Product(String name, Double price, Integer stock) {
-        this(null, name, price, stock);
-    }
-
-
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
-
-    public Double getPrice() { return price; }
-    public void setPrice(Double price) { this.price = price; }
-
-    public Integer getStock() { return stock; }
-    public void setStock(Integer stock) { this.stock = stock; }
+    public double getPrice() { return price; }
+    public void setPrice(double price) { this.price = price; }
+    public int getStock() { return stock; }
+    public void setStock(int stock) { this.stock = stock; }
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
 }
